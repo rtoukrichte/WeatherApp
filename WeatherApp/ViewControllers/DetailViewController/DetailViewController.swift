@@ -139,7 +139,9 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
             self.lblRainy.isHidden = false
             self.titleRain.isHidden = false
             self.iconRain.isHidden = false
-            self.lblRainy.text = String(format: "%.0f mm for the last hour, and %.0f for the last 3 hours", rain.rain1H!, rain.rain3H!)
+            let str1H = (rain.rain1H != nil) ? String(format: "%.2f mm/last hour.", rain.rain1H!) : ""
+            let str3H = (rain.rain3H != nil) ? String(format: "%.2f mm/last 3 hours", rain.rain1H!) : ""
+            self.lblRainy.text = String(format: "%@%@", str1H, str3H)
         }
         else{
             self.lblRainy.isHidden = true

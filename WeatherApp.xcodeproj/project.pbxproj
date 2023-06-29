@@ -30,6 +30,8 @@
 		A46D7F9E2A4DBFF600510EB9 /* CityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A46D7F9C2A4DBFF600510EB9 /* CityCell.xib */; };
 		A46D7FA12A4DC01000510EB9 /* DetailWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D7F9F2A4DC01000510EB9 /* DetailWeatherCell.swift */; };
 		A46D7FA22A4DC01000510EB9 /* DetailWeatherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A46D7FA02A4DC01000510EB9 /* DetailWeatherCell.xib */; };
+		A46D7FA52A4DF6A600510EB9 /* CustomAlertSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = A46D7FA32A4DF6A600510EB9 /* CustomAlertSheet.xib */; };
+		A46D7FA62A4DF6A600510EB9 /* CustomAlertSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46D7FA42A4DF6A600510EB9 /* CustomAlertSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		A46D7F9C2A4DBFF600510EB9 /* CityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityCell.xib; sourceTree = "<group>"; };
 		A46D7F9F2A4DC01000510EB9 /* DetailWeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWeatherCell.swift; sourceTree = "<group>"; };
 		A46D7FA02A4DC01000510EB9 /* DetailWeatherCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailWeatherCell.xib; sourceTree = "<group>"; };
+		A46D7FA32A4DF6A600510EB9 /* CustomAlertSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAlertSheet.xib; sourceTree = "<group>"; };
+		A46D7FA42A4DF6A600510EB9 /* CustomAlertSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlertSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +164,7 @@
 		A46D7F7B2A4DBCCA00510EB9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				A46D7FA72A4E3DAC00510EB9 /* CustomAlertSheet */,
 				A46D7F892A4DBD7D00510EB9 /* Preferences.swift */,
 				A46D7F8B2A4DBD8900510EB9 /* Constants.swift */,
 				A46D7F8D2A4DBD9F00510EB9 /* NibLoadable.swift */,
@@ -231,6 +236,15 @@
 				A46D7FA02A4DC01000510EB9 /* DetailWeatherCell.xib */,
 			);
 			path = DetailWeatherCell;
+			sourceTree = "<group>";
+		};
+		A46D7FA72A4E3DAC00510EB9 /* CustomAlertSheet */ = {
+			isa = PBXGroup;
+			children = (
+				A46D7FA42A4DF6A600510EB9 /* CustomAlertSheet.swift */,
+				A46D7FA32A4DF6A600510EB9 /* CustomAlertSheet.xib */,
+			);
+			name = CustomAlertSheet;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,6 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A46D7F9E2A4DBFF600510EB9 /* CityCell.xib in Resources */,
+				A46D7FA52A4DF6A600510EB9 /* CustomAlertSheet.xib in Resources */,
 				A46D7F582A4DBB2900510EB9 /* LaunchScreen.storyboard in Resources */,
 				A46D7F552A4DBB2900510EB9 /* Assets.xcassets in Resources */,
 				A46D7F9A2A4DBFD300510EB9 /* DetailViewController.xib in Resources */,
@@ -377,6 +392,7 @@
 				A46D7F862A4DBD5B00510EB9 /* City.swift in Sources */,
 				A46D7F8E2A4DBD9F00510EB9 /* NibLoadable.swift in Sources */,
 				A46D7F4C2A4DBB2800510EB9 /* AppDelegate.swift in Sources */,
+				A46D7FA62A4DF6A600510EB9 /* CustomAlertSheet.swift in Sources */,
 				A46D7F922A4DBDBC00510EB9 /* Reachability.swift in Sources */,
 				A46D7F882A4DBD6C00510EB9 /* WeatherService.swift in Sources */,
 				A46D7F8C2A4DBD8900510EB9 /* Constants.swift in Sources */,

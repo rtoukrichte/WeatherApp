@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CityListViewController: UIViewController, UISearchBarDelegate {
+class CityListViewController: UIViewController, UISearchBarDelegate, CustomAlertViewDelegate {
 
     @IBOutlet var navBarContainer: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -16,6 +16,8 @@ class CityListViewController: UIViewController, UISearchBarDelegate {
     var filteredData = [City]()
     
     let searchController = UISearchController(searchResultsController: nil)
+    
+    let customAlert = CustomAlertSheet()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +32,7 @@ class CityListViewController: UIViewController, UISearchBarDelegate {
         }
         
         self.searchBar.setShadow()
-
+        customAlert.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -99,7 +101,29 @@ class CityListViewController: UIViewController, UISearchBarDelegate {
     
     
     @IBAction func addCity(_ sender: Any) {
-        self.createAlert()
+        //self.createAlert()
+        customAlert.modalPresentationStyle = .overFullScreen
+        self.present(customAlert, animated: true, completion: nil)
+    }
+    
+    func closeActionDelegateAlertSheet() {
+        self.customAlert.dismiss(animated: true)
+    }
+    
+    func validerActionDelegateAlertSheet(name: String) {
+        self.customAlert.cityTxtField.text = ""
+        self.customAlert.dismiss(animated: true)
+        if name != "" {
+            if (name == "" || Constants.defaultCities.contains(where: {$0.name.lowercased() == name.lowercased()})) {
+                return
+            }
+            else{
+                let cityName = name.capitalizingFirstLetter()
+                Constants.defaultCities.append(City(name: cityName, longitude: 0, latitude: 0))
+                self.tableView.reloadData()
+                Preferences.updateCities(Constants.defaultCities)
+            }
+        }
     }
     
 }

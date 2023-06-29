@@ -26,7 +26,6 @@ final class WeatherAppUITests: XCTestCase {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
-
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
@@ -37,5 +36,34 @@ final class WeatherAppUITests: XCTestCase {
                 XCUIApplication().launch()
             }
         }
+    }
+    
+    func testAddCity() throws {
+        let app = XCUIApplication()
+        app.launch()
+    }
+    
+    func testShowDetailWeather() throws {
+        let app = XCUIApplication()
+        app.launch()
+        
+        let tablesQuery = app.tables
+        let parisStaticText = tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Paris"]/*[[".cells.staticTexts[\"Paris\"]",".staticTexts[\"Paris\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        parisStaticText.tap()
+        
+        let backIconButton = app.buttons["back icon"]
+        backIconButton.tap()
+        
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Lyon"]/*[[".cells.staticTexts[\"Lyon\"]",".staticTexts[\"Lyon\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        backIconButton.tap()
+        
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Lille"]/*[[".cells.staticTexts[\"Lille\"]",".staticTexts[\"Lille\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        backIconButton.tap()
+        
+        let searchCitySearchField = app.searchFields["Search city"]
+        searchCitySearchField.tap()
+        parisStaticText.tap()
+        backIconButton.tap()
+        searchCitySearchField.tap()
     }
 }
