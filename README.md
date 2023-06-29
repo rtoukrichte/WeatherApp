@@ -9,6 +9,6 @@ This is a weather forecast application that allow users to select a city from a 
 - Filter the list of cities with Search Bar
 - The application supports offline mode
 
-For Weather data, we use this API: 
-**- https://openweathermap.org/api/one-call-api**
+For Weather data, we use this API: <br/>
+  **- https://openweathermap.org/api/one-call-api**<br/>
 Use of this API requires registration on the website.
