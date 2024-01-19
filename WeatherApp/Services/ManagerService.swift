@@ -1,5 +1,5 @@
 //
-//  WeatherService.swift
+//  ManagerService.swift
 //  WeatherApp
 //
 //  Created by Rida TOUKRICHTE on 29/06/2023.
@@ -7,10 +7,10 @@
 
 import Foundation
 
-final class WeatherService {
+final class ManagerService {
     
     // MARK: - singleton instance
-    static let shared = WeatherService()
+    static let shared = ManagerService()
     
     private init() {}
     
@@ -19,11 +19,11 @@ final class WeatherService {
         
         let paramsUrl = String(format: "?q=%@&appid=%@&units=%@", cityName, Constants.Keys.weatherAPIKey, "metric")
         
-        guard let APIUrl = URL(string: String(format: "%@%@", Constants.infosWeatherUrl, paramsUrl))
+        guard let apiURL = URL(string: String(format: "%@%@", Constants.dataWeatherURL, paramsUrl))
         else { return }
         
         if Reachability.isConnectedToNetwork() {
-            URLSession.shared.dataTask(with: APIUrl) { (data, response, error) in
+            URLSession.shared.dataTask(with: apiURL) { (data, response, error) in
                 
                 guard let data = data else { return }
                 do {

@@ -13,8 +13,8 @@ struct Constants {
         static let weatherAPIKey = "159dfcf892c7316bbac5573d06015e70"
     }
     
-    static let baseUrl = "https://api.openweathermap.org/"
-    static let infosWeatherUrl = baseUrl + "data/2.5/weather"
+    static let baseURL = "https://api.openweathermap.org/"
+    static let dataWeatherURL = baseURL + "data/2.5/weather"
     
     static var defaultCities = [ City(name: "Paris", longitude: 2.333333, latitude: 48.866667),
                                  City(name: "Lyon", longitude: 2.333333, latitude: 48.866667),

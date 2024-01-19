@@ -69,7 +69,7 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
     func loadDataWeather() {
         
         self.loader.startAnimating()
-        WeatherService.shared.loadInfos(cityName: cityName) { success, weather, error  in
+        ManagerService.shared.loadInfos(cityName: cityName) { success, weather, error  in
             guard success else {
                 DispatchQueue.main.async {
                     self.lblError.isHidden = false
