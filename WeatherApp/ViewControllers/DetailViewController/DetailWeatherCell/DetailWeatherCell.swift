@@ -15,6 +15,14 @@ class DetailWeatherCell: UITableViewCell, ConfigurableCell {
     @IBOutlet weak var lblDate: UILabel!
     @IBOutlet weak var containerView: UIView!
     
+    let preferredFormat = "dd MMM yyyy"
+    
+    var currentDate: Date? {
+        didSet {
+            self.lblDate.text = currentDate?.createformattedDate(with: preferredFormat)
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = .clear
@@ -25,15 +33,13 @@ class DetailWeatherCell: UITableViewCell, ConfigurableCell {
     }
 
     func configureCell(with item: WeatherData.MainData) {
-        //self.lblDate.text = formattedDay(date: (item.date)!)
-        //self.lblDate.text = formattedDay(date: DateFormatter().string(from: Date()))
         self.lblMin.text = String(format: "%.0f °C", item.minTemp!)
         self.lblMax.text = String(format: "%.0f °C", item.maxTemp!)
     }
     
-    func formattedDay(date: String) -> String {
+    func formattedDay(_ date: String) -> String {
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en_US")
+        formatter.locale = Locale.current
         formatter.dateFormat = "yyyy-MM-dd"
         
         if let output_date = formatter.date(from: date) {

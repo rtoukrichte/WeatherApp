@@ -34,11 +34,6 @@ class CityListViewController: UIViewController, UISearchBarDelegate, CustomAlert
         self.searchBar.setShadow()
         customAlert.delegate = self
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     // MARK: - SearchBar Delegate method
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -74,34 +69,8 @@ class CityListViewController: UIViewController, UISearchBarDelegate, CustomAlert
     func isSearching() -> Bool {
         return searchBar.text != ""
     }
-    
-    func createAlert() -> Void {
-        let alert = UIAlertController(title: "City", message: "Add new city to your list", preferredStyle: .alert)
         
-        alert.addTextField { (textField) in
-            textField.placeholder = "Ex: Paris"
-        }
-
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
-            let textField = alert?.textFields![0]
-            if (textField?.text)! == "" || Constants.defaultCities.contains(where: {$0.name.lowercased() == (textField?.text?.lowercased())!}){
-                return
-            }
-            else{
-                let cityName = (textField?.text!)!.capitalizingFirstLetter()
-                Constants.defaultCities.append(City(name: cityName, longitude: 0, latitude: 0))
-                self.tableView.reloadData()
-                Preferences.updateCities(Constants.defaultCities)
-            }
-            
-        }))
-        alert.view.tintColor = .black
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    
     @IBAction func addCity(_ sender: Any) {
-        //self.createAlert()
         customAlert.modalPresentationStyle = .overFullScreen
         self.present(customAlert, animated: true, completion: nil)
     }
@@ -128,7 +97,7 @@ class CityListViewController: UIViewController, UISearchBarDelegate, CustomAlert
     
 }
 
-extension CityListViewController: UITableViewDelegate, UITableViewDataSource{
+extension CityListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -148,11 +117,9 @@ extension CityListViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let detailsVC = DetailViewController(nibName: "DetailViewController", bundle: nil)
-        detailsVC.cityName = isSearching() ? (filteredData[indexPath.row]).name : (Constants.defaultCities[indexPath.row]).name
+        let selectedCity = isSearching() ? (filteredData[indexPath.row]).name : (Constants.defaultCities[indexPath.row]).name
+        let detailsVC = DetailViewController(vm: DetailWeatherViewModel(selectedCity: selectedCity))
         self.navigationController?.pushViewController(detailsVC, animated: true)
-        
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -163,7 +130,7 @@ extension CityListViewController: UITableViewDelegate, UITableViewDataSource{
         if (editingStyle == UITableViewCell.EditingStyle.delete) {
             
             if isSearching() {
-                Constants.defaultCities.remove(at: Constants.defaultCities.index(where: {$0.name == filteredData[indexPath.row].name})!)
+                Constants.defaultCities.remove(at: Constants.defaultCities.firstIndex(where: {$0.name == filteredData[indexPath.row].name})!)
                 filteredData.remove(at: indexPath.row)
             }
             else{
@@ -174,5 +141,4 @@ extension CityListViewController: UITableViewDelegate, UITableViewDataSource{
             Preferences.updateCities(Constants.defaultCities)
         }
     }
-    
 }

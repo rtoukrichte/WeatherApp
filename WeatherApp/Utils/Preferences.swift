@@ -14,8 +14,11 @@ final class Preferences: NSObject {
     class func initCitiesData(_ cities: [City]) {
         
         let usD = UserDefaults.standard
-        let jsonData = try? JSONEncoder().encode(cities)
-        usD.setValuesForKeys([cityDataKey: jsonData ?? []])
+        guard let jsonData = try? JSONEncoder().encode(cities) else {
+            return
+        }
+        
+        usD.setValuesForKeys([cityDataKey: jsonData])
         usD.synchronize()
         
     }
@@ -41,8 +44,10 @@ final class Preferences: NSObject {
         
         if let savedCities = getCities() {
             if savedCities.count != newCities.count {
-                let jsonData = try? JSONEncoder().encode(newCities)
-                usD.setValuesForKeys([cityDataKey: jsonData ?? []])
+                guard let jsonData = try? JSONEncoder().encode(newCities) else {
+                    return
+                }
+                usD.setValuesForKeys([cityDataKey: jsonData])
                 usD.synchronize()
             }
         }

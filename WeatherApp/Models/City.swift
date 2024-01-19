@@ -7,8 +7,10 @@
 
 import Foundation
 
-struct City: Encodable, Decodable {
+struct City: Codable {
+    
     let name : String
     let longitude : Float?
     let latitude : Float?
+    
 }
