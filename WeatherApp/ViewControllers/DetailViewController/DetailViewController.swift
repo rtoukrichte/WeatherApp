@@ -50,10 +50,6 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.isNavigationBarHidden = true
-        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-        
         self.viewNow.layer.masksToBounds = false
         self.viewNow.backgroundColor = .red
         self.viewNow.layer.cornerRadius = self.viewNow.frame.height / 2
@@ -176,7 +172,7 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
         
     // MARK: - UIButton Actions
     @IBAction func goBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        weatherViewModel?.popVC()
     }
         
 }

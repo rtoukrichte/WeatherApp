@@ -12,6 +12,8 @@ class DetailWeatherViewModel: ObservableObject {
     
     private var serviceManager = ServiceManager.shared
     
+    weak var appCoordinator: CityCoordinator!
+    
     private var cancellable = Set<AnyCancellable>()
     
     @Published var weatherData: WeatherData?
@@ -43,6 +45,10 @@ class DetailWeatherViewModel: ObservableObject {
     
     func numberOfDays() -> Int {
         return 6
+    }
+    
+    func popVC() {
+        appCoordinator.goToBack()
     }
     
 }

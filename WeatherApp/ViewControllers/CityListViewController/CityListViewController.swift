@@ -18,10 +18,12 @@ class CityListViewController: UIViewController, UISearchBarDelegate, CustomAlert
     let searchController = UISearchController(searchResultsController: nil)
     
     let customAlert = CustomAlertSheet()
+    var blackView = UIView()
+    
+    weak var appCoordinator: CityCoordinator!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.isNavigationBarHidden = true
         
         tableView.register(CityCell.nib, forCellReuseIdentifier: CityCell.reuseIdentifier)
         
@@ -71,16 +73,27 @@ class CityListViewController: UIViewController, UISearchBarDelegate, CustomAlert
     }
         
     @IBAction func addCity(_ sender: Any) {
-        customAlert.modalPresentationStyle = .overFullScreen
-        self.present(customAlert, animated: true, completion: nil)
+        addBlackView()
+        appCoordinator.present(this: customAlert)
     }
     
     func closeActionDelegateAlertSheet() {
+        self.blackView.removeFromSuperview()
         self.customAlert.dismiss(animated: true)
+    }
+    
+    func addBlackView() {
+        blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        blackView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        
+        UIView.animate(withDuration: 0.1, delay: 0.0, options: .curveEaseInOut, animations: {
+            self.view.addSubview(self.blackView)
+        }, completion: nil)
     }
     
     func validerActionDelegateAlertSheet(name: String) {
         self.customAlert.cityTxtField.text = ""
+        self.blackView.removeFromSuperview()
         self.customAlert.dismiss(animated: true)
         if name != "" {
             if (name == "" || Constants.defaultCities.contains(where: {$0.name.lowercased() == name.lowercased()})) {
@@ -118,27 +131,32 @@ extension CityListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedCity = isSearching() ? (filteredData[indexPath.row]).name : (Constants.defaultCities[indexPath.row]).name
-        let detailsVC = DetailViewController(vm: DetailWeatherViewModel(selectedCity: selectedCity))
-        self.navigationController?.pushViewController(detailsVC, animated: true)
+        appCoordinator.goToDetailsCity(cityName: selectedCity)
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if (editingStyle == UITableViewCell.EditingStyle.delete) {
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let deleteAction = UIContextualAction(style: .normal, title: "") { (action, sourceView, completion) in
             
-            if isSearching() {
-                Constants.defaultCities.remove(at: Constants.defaultCities.firstIndex(where: {$0.name == filteredData[indexPath.row].name})!)
-                filteredData.remove(at: indexPath.row)
+            if self.isSearching() {
+                Constants.defaultCities.remove(at: Constants.defaultCities.firstIndex(where: {$0.name == self.filteredData[indexPath.row].name})!)
+                self.filteredData.remove(at: indexPath.row)
             }
-            else{
+            else {
                 Constants.defaultCities.remove(at: indexPath.row)
             }
             
             self.tableView.reloadData()
             Preferences.updateCities(Constants.defaultCities)
         }
+        deleteAction.image = UIImage(systemName: "trash")
+        deleteAction.backgroundColor = .red
+        
+        let swipeConfig = UISwipeActionsConfiguration(actions: [deleteAction])
+        return swipeConfig
     }
 }

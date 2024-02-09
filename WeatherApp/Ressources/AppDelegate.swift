@@ -11,17 +11,21 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var appCoordinator: AppCoordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
 
-        let mainController = CityListViewController() as CityListViewController
-        let navigationController = UINavigationController(rootViewController: mainController)
+        let navigationController = UINavigationController.init()
         navigationController.navigationBar.isTranslucent = false
-        window?.rootViewController = navigationController
+        navigationController.navigationBar.isHidden = true
         
+        appCoordinator = AppCoordinator(navController: navigationController)
+        appCoordinator?.start()
+        
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         
         return true

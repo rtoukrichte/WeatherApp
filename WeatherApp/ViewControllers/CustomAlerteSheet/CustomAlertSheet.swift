@@ -72,12 +72,12 @@ class CustomAlertSheet: UIViewController, UITextFieldDelegate {
     }
     
     func viewWillMoveUp() {
-        UIView.animate(withDuration: 0.4, delay: 0.0, options: .curveEaseOut, animations: { self.view.frame = CGRect(x: 0, y: 0, width: self.screenWidth, height: self.screenHeight) }, completion: nil)
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseOut, animations: { self.view.frame = CGRect(x: 0, y: 0, width: self.screenWidth, height: self.screenHeight) }, completion: nil)
     }
     
     func viewWillMoveDown() {
         //self.view.frame = CGRect(x: 0, y: screenHeight, width: screenWidth, height: screenHeight)
-        UIView.animate(withDuration: 0.4, delay: 0.0, options: .curveEaseIn, animations: { self.view.frame = CGRect(x: 0, y: self.screenHeight, width: self.screenWidth, height: self.screenHeight) }, completion: nil)
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: { self.view.frame = CGRect(x: 0, y: self.screenHeight, width: self.screenWidth, height: self.screenHeight) }, completion: nil)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

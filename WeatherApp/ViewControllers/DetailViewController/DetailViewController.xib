@@ -110,7 +110,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SuX-hD-hGE">
-                    <rect key="frame" x="286.33333333333331" y="7" width="9" height="9"/>
+                    <rect key="frame" x="287.66666666666669" y="7" width="9" height="9"/>
                     <color key="backgroundColor" systemColor="systemRedColor"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="9" id="Dw9-YA-jeh"/>
@@ -118,8 +118,8 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ybp-Mj-2Hl">
-                    <rect key="frame" x="300.33333333333331" y="5" width="36.666666666666686" height="13"/>
-                    <fontDescription key="fontDescription" name="Helvetica-LightOblique" family="Helvetica" pointSize="11"/>
+                    <rect key="frame" x="301.66666666666669" y="7" width="33.333333333333314" height="9"/>
+                    <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="10"/>
                     <color key="textColor" systemColor="systemRedColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -269,7 +269,7 @@
                 <constraint firstItem="9Xf-VZ-agj" firstAttribute="centerY" secondItem="loA-L2-c8B" secondAttribute="centerY" id="GIe-EG-JCu"/>
                 <constraint firstItem="75Z-p0-CYs" firstAttribute="leading" secondItem="pVT-9c-4Yn" secondAttribute="leading" id="Hf3-fQ-x3S"/>
                 <constraint firstItem="aYa-XC-1fq" firstAttribute="leading" secondItem="Rds-Hr-ItG" secondAttribute="leading" constant="16" id="JSi-cl-CGm"/>
-                <constraint firstItem="Ybp-Mj-2Hl" firstAttribute="top" secondItem="gFY-Zs-R09" secondAttribute="top" constant="5" id="Jr7-Ol-KEX"/>
+                <constraint firstItem="Ybp-Mj-2Hl" firstAttribute="top" secondItem="gFY-Zs-R09" secondAttribute="top" constant="7" id="Jr7-Ol-KEX"/>
                 <constraint firstItem="j2F-Ny-ckk" firstAttribute="leading" secondItem="gFY-Zs-R09" secondAttribute="leading" constant="16" id="Kdd-SE-ryu"/>
                 <constraint firstItem="xvY-4i-Fje" firstAttribute="centerY" secondItem="X2Z-4W-WPV" secondAttribute="centerY" id="LpT-TO-oQz"/>
                 <constraint firstItem="tVK-vf-B7m" firstAttribute="leading" secondItem="9Xf-VZ-agj" secondAttribute="trailing" constant="35.5" id="MFe-bg-DSI"/>
@@ -285,7 +285,7 @@
                 <constraint firstItem="9Xf-VZ-agj" firstAttribute="leading" secondItem="xvY-4i-Fje" secondAttribute="leading" id="V22-Cy-gYr"/>
                 <constraint firstItem="CFf-pc-Aon" firstAttribute="top" secondItem="TZn-CH-OGz" secondAttribute="bottom" constant="10" id="YV0-ag-Dek"/>
                 <constraint firstItem="yec-0A-PyN" firstAttribute="top" secondItem="2kW-ml-WGQ" secondAttribute="top" id="Yag-rk-kWV"/>
-                <constraint firstAttribute="trailing" secondItem="Ybp-Mj-2Hl" secondAttribute="trailing" constant="5" id="bby-Ba-j2m"/>
+                <constraint firstAttribute="trailing" secondItem="Ybp-Mj-2Hl" secondAttribute="trailing" constant="7" id="bby-Ba-j2m"/>
                 <constraint firstItem="Ybp-Mj-2Hl" firstAttribute="leading" secondItem="SuX-hD-hGE" secondAttribute="trailing" constant="5" id="eDQ-aW-06E"/>
                 <constraint firstItem="j2F-Ny-ckk" firstAttribute="top" secondItem="aYa-XC-1fq" secondAttribute="bottom" constant="6" id="g41-ey-5Ig"/>
                 <constraint firstItem="pVT-9c-4Yn" firstAttribute="leading" secondItem="KRO-IJ-sld" secondAttribute="trailing" constant="9" id="gyy-iY-Cfm"/>
